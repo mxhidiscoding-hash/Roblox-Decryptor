@@ -333,3 +333,11 @@ gs     = 0x120000000
 5  jump to the band handler
 6  run until all 4096 bytes of page are written
 ```
+
+this isnt even everything theres a few more things you'll have to do to make this runnable but this is a good documentation post
+this is basically the full method and what I personally use for decryption theres other alternatives that I wont get into since 
+this post will already get me hated by some people ahem... (hexdev) anyways thanks for reading theres a lot more obviously needed
+to make this runnable and also resolve int3 branches imports exports etc but its a very very good starting point for anyone
+interested in finally decrypting 100% of roblox <3 
+
+justmagic and bitdancer take this as a message to update your encryption please its getting boring.
