@@ -174,5 +174,162 @@ most bands you cant get simply and there build out of the overall frames
 
 thats the full lesson for bands atleast heres more formulas as well you can use for reference I will only leak a few as I dont feel like leaking all the methods:
 
-lets move onto getting more information 
+lets move onto getting more information
 
+---
+
+## 7. Keys
+
+every page gets its own 32 byte key
+
+```
+key_count       = how many keys there are (8196 in this build)
+key_index(rva)  = (rva >> 12) % key_count
+key_offset(rva) = key_index * 32
+```
+
+`rva >> 12` is the page number not the band number
+
+the keys just keep counting up they dont start over when a new band starts
+
+```
+band 0    pages    1 .. 512      uses keys    1 .. 512
+band 1    pages  513 .. 1024     uses keys  513 .. 1024
+band 49   pages 25089 .. 25572   uses keys  501 .. 984
+```
+
+to find how many keys there are you look for the wrap being done as a multiply
+
+```asm
+48 B9 AB AA AA AA AA AA AA AA   movabs rcx, 0xAAAAAAAAAAAAAAAB
+48 0F AF C1                     imul   rax, rcx
+48 F7 E2                        mul    rdx
+48 C1 E2 05                     shl    rdx, 5          ; * 32 so rdx was a key number
+```
+
+that multiply by 32 at the end tells you the value before it was a key number
+
+you can turn the magic number back into a count like this
+
+```
+lower = ceil(2^64 / value)
+upper = floor((2^64 - 1) / (value - 1))
+answer = lower if lower == upper and 1024 <= lower <= 65536 else none
+```
+
+0xAAAAAAAAAAAAAAAB comes back as 3 which is only part of a fraction not the real count so keep following where it gets used
+
+reading the key itself
+
+```asm
+66 0F 6F 08            movdqa xmm1, xmmword ptr [rax]
+66 0F 6F 50 10         movdqa xmm2, xmmword ptr [rax + 0x10]
+```
+
+two loads of 16 bytes sitting 16 bytes apart thats how you spot which two xmm registers the handler reads
+
+---
+
+## 8. The frame
+
+the frame is where the handler keeps its numbers for each band
+
+```
+page number goes here        0xcb0
+page address goes here       0x15f0
+second copy of the number    0x15f8
+
+frame has to be at least 0x1600 bytes
+```
+
+```asm
+48 8B 95 B0 0C 00 00   mov rdx, qword ptr [rbp + 0xcb0]   ; page number
+48 8B 8D F0 15 00 00   mov rcx, qword ptr [rbp + 0x15f0]   ; page address
+48 8B 85 F8 15 00 00   mov rax, qword ptr [rbp + 0x15f8]   ; second copy
+```
+
+those two sit right at the top of a 0x1600 frame so anything smaller and the handler reads past the end
+
+picking which bands numbers to use
+
+```
+start with the basic set
+find the biggest band start that is still at or below the page
+if the page is less than 0x200000 past it use that bands numbers
+```
+
+---
+
+## 9. Pages and records
+
+```
+page            = rva >> 12
+where in page   = rva & 0xfff
+total pages     = ceil(text.vs / 0x1000)     ; 25572
+pages per band  = 0x200000 / 0x1000          ; 512
+pages in last   = ceil(0x1E4000 / 0x1000)    ; 484
+```
+
+49 * 512 + 484 should come to 25572 if it dont then the sizes got worked out wrong somewhere
+
+some versions keep 384 bytes of record for every page
+
+```asm
+48 C1 E8 0C               shr    rax, 0xc         ; page number
+25 FF 0F 00 00            and    eax, 0xfff       ; where in the page
+48 69 C0 80 01 00 00      imul   rax, rax, 0x180  ; * 384
+```
+
+---
+
+## 10. The start record
+
+before the handler runs it reads a starting number out of a small record
+
+```
+which slot  = record[0x96]
+encoded[i]  = record[0xA4 + which slot*4 + i]        i = 0..3
+
+start value = LE32( ROL8(NOT encoded[i], 4) for i = 0..3 )
+```
+
+if all four encoded bytes are 0xFF the start value comes out as 0 because NOT 0xFF gives 0x00
+
+the code that fills the record in always leaves it that way
+
+```
+new slot = (old slot + 1) % 7
+fills in = 0xFFFFFFFF
+```
+
+```asm
+41 0F B6 87 96 00 00 00         movzx  eax, byte ptr [r15 + 0x96]        ; which slot
+41 0F B6 84 07 A4 00 00 00      movzx  eax, byte ptr [r15 + rax + 0xa4]  ; encoded byte
+F7 D0                            not    eax
+C0 C0 04                         rol    al, 4                              ; swap the two halves
+41 88 44 07 01                   mov    byte ptr [r15 + rax + 1], al       ; decoded byte
+```
+
+---
+
+## 11. One page start to finish
+
+```
+page   = 0x100001000
+frame  = 0x110004000
+stack  = 0x110000000
+gs     = 0x120000000
+```
+
+```asm
+49 B9 00 10 00 00 01 00 00 00   movabs r9, 0x100001000     ; page
+```
+
+```
+1  put the encrypted page at          page
+2  write the page number to           frame + 0xcb0
+3  write the page address to          frame + 0x15f0
+4  load the key halves into           xmm[key0] and xmm[key1]
+5  jump to the band handler
+6  run until all 4096 bytes of page are written
+```
