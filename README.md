@@ -14,7 +14,7 @@ We will be studying **static decryption**: reading the file on disk and decrypti
 
 ## 1. Sections
 
-To begin, the binary is split into **sections**. You get offsets, structs and encrypted data out of these. Most of the import memory lives in `.text`.
+To begin, the binary is split into **sections**. You get offsets, structs and encrypted data out of these. Most of the import memory lives in `.byfron`.
 
 `.text` is the code section. It is split into **pages** and most of those pages are protected and encrypted
 
@@ -25,7 +25,7 @@ So the layout looks like this:
 ```
 RobloxPlayerBeta.dll
 │
-├── .text              ← the code, encrypted
+├── .byfron              ← the code, encrypted
 │   ├── band 0         ← 2 MB
 │   ├── band 1         ← 2 MB
 │   ├── band 2         ← 2 MB
