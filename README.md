@@ -25,14 +25,14 @@ So the layout looks like this:
 ```
 RobloxPlayerBeta.dll
 │
-├── .byfron              ← the code, encrypted
-│   ├── band 0         ← 2 MB
-│   ├── band 1         ← 2 MB
-│   ├── band 2         ← 2 MB
+├── .byfron              <- the code, encrypted
+│   ├── band 0         <- 2 MB
+│   ├── band 1         <- 2 MB
+│   ├── band 2         <- 2 MB
 │   ├── ...
-│   └── band 49        ← 2 MB (last one is a bit short)
+│   └── band 49        <- 2 MB (last one is a bit short)
 │
-└── other sections     ← .rdata, .data, .reloc, ...
+└── other sections     <- .rdata, .data, .reloc, ...
 ```
 
 ---
