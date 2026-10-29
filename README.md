@@ -208,6 +208,7 @@ That is static decryption.
 
 To make it fully runnable you still need to handle int3 branches, imports and exports. But the page decryption loop above is the core of it.
 e.g this explains just a part of the encryption, SIMD128, other then that and everything will not be explained.
+
 justmagic and bitdancer, please update the encryption, this is getting boring.
 
 Discord: mxhidk, Mxhid
