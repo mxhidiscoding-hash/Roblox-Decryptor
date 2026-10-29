@@ -1,0 +1,60 @@
+Copyright (c) 2026 mxhidiscoding-hash and pibbly. All rights reserved.
+
+MIT License with Educational Use Disclaimer, Trademark Notice, and Limitation of Liability
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+1. The above copyright notice, this permission notice, and all disclaimers and
+   notices contained herein shall be included in all copies or substantial
+   portions of the Software.
+
+2. EDUCATIONAL AND RESEARCH USE. The Software is provided strictly for
+   educational and security-research purposes. It is intended to document and
+   study static binary analysis and protection-scheme concepts. It is not
+   intended to facilitate cheating, bypassing anti-cheat or anti-tamper
+   systems, unauthorized access, circumvention of technical protection
+   measures, or any use that violates the Roblox Terms of Service or any
+   applicable law or regulation. You are solely responsible for ensuring your
+   use complies with all applicable laws, regulations, and terms of service.
+
+3. NO AFFILIATION. This project is not affiliated with, endorsed by, sponsored
+   by, approved by, or officially connected to Roblox Corporation or any of its
+   subsidiaries or affiliates. "Roblox," "Roblox Player," "Roblox Studio," and
+   all related names, logos, and marks are trademarks or registered trademarks
+   of Roblox Corporation in the United States and other countries. All other
+   trademarks referenced are the property of their respective owners and are
+   used for identification purposes only.
+
+4. THIRD-PARTY RIGHTS. All rights, title, and interest in and to any software,
+   binaries, assets, or intellectual property analyzed, referenced, or
+   discussed by this project remain with their respective owners. No license,
+   express or implied, is granted to any third-party software or intellectual
+   property. This project does not distribute or include any proprietary Roblox
+   software, binaries, assets, or copyrighted game content.
+
+5. NO WARRANTY. THE SOFTWARE IS PROVIDED "AS IS," WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND
+   NON-INFRINGEMENT. THE AUTHORS MAKE NO WARRANTY THAT THE SOFTWARE WILL BE
+   ERROR-FREE, ACCURATE, COMPLETE, OR SUITABLE FOR ANY PARTICULAR PURPOSE.
+
+6. LIMITATION OF LIABILITY. IN NO EVENT SHALL THE AUTHORS, COPYRIGHT HOLDERS, OR
+   CONTRIBUTORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN
+   AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN
+   CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE,
+   INCLUDING BUT NOT LIMITED TO DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+   CONSEQUENTIAL, OR PUNITIVE DAMAGES, LOSS OF DATA, LOSS OF PROFITS, OR
+   BUSINESS INTERRUPTION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+7. INDEMNIFICATION. You agree to indemnify, defend, and hold harmless the
+   authors and copyright holders from and against any and all claims,
+   liabilities, damages, losses, or expenses arising from your use of the
+   Software or your violation of any law, regulation, or third-party right.
+
+8. RESERVATION OF RIGHTS. All rights not expressly granted in this License are
+   reserved by the copyright holders.
