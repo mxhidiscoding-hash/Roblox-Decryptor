@@ -1,4 +1,4 @@
-Copyright (c) 2026 mxhidiscoding-hash and pibbly. All rights reserved.
+Copyright (c) 2026 mxhidiscoding-hash / Mxhid/ mxhidk. All rights reserved.
 
 MIT License with Educational Use Disclaimer, Trademark Notice, and Limitation of Liability
 
