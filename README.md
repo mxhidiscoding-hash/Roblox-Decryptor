@@ -1,4 +1,4 @@
-# Static-Decryptor
+# Roblox's Static Decryptor.
 
 Exploring ways to decrypt Roblox, at disk.
 
