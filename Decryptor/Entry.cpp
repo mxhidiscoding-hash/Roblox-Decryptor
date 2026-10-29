@@ -4,9 +4,9 @@
 #include "Logger.hpp"
 #include "Offsets.h"
 #include "Common.h"
-#include "JccResolver.h"
-#include "Pdata.h"
-#include "Rebuild.h"
+// #include "JccResolver.h"
+// #include "Pdata.h"
+// #include "Rebuild.h"
 
 #include <unicorn/unicorn.h>
 
