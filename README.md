@@ -182,11 +182,11 @@ call DecryptEntry
 ## 9. Putting it together
 
 ```
-parse DLL → find .byfron
+parse DLL -> find .byfron
 extract: cipherEntry, band dispatch table (base, span, handler RVA per band),
          frame slots, key blob, key count, key XMM regs, start record
 
-parse EXE → find .text
+parse EXE -> find .text
 
 for each page in .text:
     rva   = text.va + page_offset
