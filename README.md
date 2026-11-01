@@ -208,5 +208,5 @@ e.g this explains just a part of the encryption, SIMD128, other then that and ev
 
 justmagic and bitdancer, please update the encryption, this is getting boring.
 
-Discord: mxhidk, Mxhid
+Discord: credential_, pibbly, mxhidk, Mxhid
 @License.txt
