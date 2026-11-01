@@ -2,7 +2,7 @@
 
 Exploring ways to decrypt Roblox, at disk.
 
-Made By: mxhid
+Made By: Mxhid and Pibbly
 ---
 
 In Roblox there are two very important files: `RobloxPlayerBeta.exe` and `RobloxPlayerBeta.dll`.
